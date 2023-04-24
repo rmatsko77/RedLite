@@ -1,7 +1,11 @@
-import React from "react";
 import './Header.css';
 
 export function Header() {
+
+    const handleChange = (e) => {
+        return e.target.value
+    }
+
     return (
         <div className="header">
             <div className="logos">
@@ -23,8 +27,8 @@ export function Header() {
                         </img></label>
             <input
                 type="text"
-                value=''
-                placeholder="Search Subreddits">
+                placeholder="Search Subreddits"
+                >
             </input>
           </form>
         </div>

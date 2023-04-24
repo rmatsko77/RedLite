@@ -1,0 +1,36 @@
+.subredditList {
+    font-size: 1rem;
+    width: 30%;
+    padding: 0;
+    margin-left: .5rem;
+}
+
+.subredditList h2 {
+    font-size: 1.3rem;
+}
+
+.subredditList ul {
+    width: 100%;
+    margin-left: 0;
+    padding-left: 0;
+    list-style-type: none;
+    
+}
+
+.subredditList button {
+    width: 98%;
+    height: 3rem;
+    background-color: rgba(94, 94, 94, 0.325);
+    color: white;
+    border-radius: 3px;
+    margin-top: .25rem;
+    margin-bottom: .25rem;
+    cursor: pointer;
+    border: none;
+}
+
+.subredditList button:hover {
+    background-color: #504dffb0;
+    border: black;
+
+}
