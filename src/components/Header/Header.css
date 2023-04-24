@@ -1,0 +1,70 @@
+.header {
+    background-color: rgb(37, 37, 37);
+    display: flex;
+    margin: .5rem;
+    align-items: center;
+    height: 4rem;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.header .logos {
+    float: left;
+    margin-left: 1rem;
+    margin-right: 8rem;
+}
+
+.header #logo {
+    height: 3rem;
+    
+}
+
+.header #text-logo {
+    height: 3rem;
+    
+}
+
+.header #search-icon {
+    position: absolute;
+    height: 1.5rem;
+    top: 0;
+    left: 0;
+    padding-left: .45rem;
+    padding-top: .45rem;
+    z-index: 1;
+}
+
+.header input {
+    width: 15rem;
+    height: 2rem;
+    float: right;
+    border-radius: 5px;
+    padding-left: 2.3rem;
+    padding-top: .2rem;
+    background-color: rgba(208, 208, 208, 0.654);
+    color: white;
+    cursor: default;
+    box-shadow: none;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 400;
+    
+}
+
+.header input:hover {
+    background-color: rgba(208, 208, 208, 0.54);
+}
+
+.header input:focus {
+    background-color: rgba(208, 208, 208, 0.211);
+    outline: none;
+}
+
+.header input::placeholder {
+    color: white;
+    font-weight: 200;
+}
+
+.header form {
+    position: relative;
+}
