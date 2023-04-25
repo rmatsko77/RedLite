@@ -2,9 +2,6 @@ import './Header.css';
 
 export function Header() {
 
-    const handleChange = (e) => {
-        return e.target.value
-    }
 
     return (
         <div className="header">
@@ -23,7 +20,8 @@ export function Header() {
             <form onSubmit=''>
             <label><img 
                     src="/search-icon.png"
-                    id='search-icon'>
+                    id='search-icon'
+                    alt=''>
                         </img></label>
             <input
                 type="text"
