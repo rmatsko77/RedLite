@@ -1,0 +1,43 @@
+.post {
+    list-style-type: none;
+    background-color: #393863;
+    border-radius: 0;
+    margin-top: -13px;
+    margin-bottom: 0;
+    min-height: 10rem;
+    padding-bottom: 0;
+    padding-top: 0;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-top: 1pt solid white;
+}
+
+.post:hover {
+    background-color: #2f2f53;
+}
+
+.post .top {
+    display: inline-block;
+
+    margin-top: 0;
+    padding-top: 0;
+
+}
+
+.post .top .subreddit {
+    padding-right: .5rem;
+}
+
+.post .top .author {
+    padding-right: .5rem;
+}
+
+a:visited {
+    color: white;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+
+}

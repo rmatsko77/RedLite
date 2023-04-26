@@ -25,13 +25,14 @@ export function SubredditList() {
             />
         })
     }
-    console.log(list)
+
     return (
         <div className="subredditList">
-            <h2>Popular Subreddits</h2>
+            <div className="subredditList-title">
+                <h2>Popular Subreddits</h2>
+            </div>
             <ul>
                 {list}
-                <p>Working</p>
             </ul>
         </div>
     )

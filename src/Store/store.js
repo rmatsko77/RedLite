@@ -1,9 +1,11 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import subredditsReducer from '../Features/SubredditSlice';
+import feedReducer from '../Features/FeedSlice'
 
 const store = configureStore({
     reducer: combineReducers({
-        subreddits: subredditsReducer
+        subreddits: subredditsReducer,
+        feed: feedReducer
     })
 })
 
