@@ -12,7 +12,7 @@ export function SubredditList() {
 
     useEffect(() => {
         dispatch(fetchSubreddits())
-    }, [dispatch])
+    },[])
     
     if (!subreddits.length){
         return;

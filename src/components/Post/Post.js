@@ -3,13 +3,10 @@ import './Post.css'
 
 export const Post = (props) => {
     const userUrl = 'https://www.reddit.com/user/' + props.author;
-    const handleClick = e => {
-        
-    }
 
     return (
             <li className="post">
-                <div className="top" onClick={handleClick}>
+                <div className="top">
                     <p className="subreddit">{props.subreddit}</p>
                     <a href={userUrl} className="author" target='_blank'>u/{props.author}</a>
                 </div>
