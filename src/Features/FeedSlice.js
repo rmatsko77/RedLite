@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 export const fetchFeed = createAsyncThunk(
     'feed/get',
     async (sub) => {
-        const data = await fetch(`https://www.reddit.com/${sub}/hot.json`);
+        const data = await fetch(`https://www.reddit.com/${sub}/top.json`);
         const res = await data.json();
         return res.data.children.map((post) => post.data);
     }
