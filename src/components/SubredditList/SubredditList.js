@@ -1,36 +1,32 @@
 import React, { useEffect } from "react";
-import { selectSubreddits, fetchSubreddits } from "../../Features/SubredditSlice";
+import {  selectSubreddits } from "../../Features/SubredditSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Subreddit } from "../Subreddit/Subreddit";
 import './SubredditList.css'
-import store from "../../Store/store";
-import { fetchSearchTerm } from "../../Features/SearchTermSlice";
+import { fetchSubreddits } from "../../Features/SubredditSlice";
 
 export function SubredditList() {
 
     const dispatch = useDispatch();
-    const state = store.getState();
     const subreddits = useSelector(selectSubreddits);
-    let list = subreddits.map(subreddit => {
-        return <Subreddit 
-            key={subreddit.id}
-            img={subreddit.icon_img}
-            name={subreddit.display_name_prefixed}
+    const subredditsList = subreddits.map(sub => {
+        const name = sub.display_name_prefixed;
+        const icon = sub.icon_img;
+        const id = sub.id;
+        return <Subreddit
+            name={name}
+            icon={icon}
+            id={id}
         />
-    });
+    })
 
     useEffect(() => {
-      dispatch(fetchSubreddits())
-    },[])
+     dispatch(fetchSubreddits())
+    }, [])
 
     return (
-        <div className="subredditList">
-            <div className="subredditList-title">
-                <h2>Popular Subreddits</h2>
-            </div>
-            <ul>
-                {list}
-            </ul>
-        </div>
+        <ul className="subredditList">
+            {subredditsList}
+        </ul>
     )
 }

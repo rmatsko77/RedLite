@@ -1,42 +1,40 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const fetchSubreddits = createAsyncThunk(
-    'subreddits/get',
+    'subreddits/getSubreddits',
     async () => {
-        const res = await fetch('https://www.reddit.com/subreddits.json');
+        const res = await fetch(`https://www.reddit.com//subreddits.json`);
         const json = await res.json();
-        return json.data.children.map((subreddit) => subreddit.data);
+        return json.data.children.map((subreddit) => subreddit.data)
     }
 )
 
-const subreditsSlice = createSlice({
+const subredditsSlice = createSlice({
     name: 'subreddits',
     initialState: {
         subreddits: [],
-        subredditsLoading: false,
-        subredditsError: false
+        isLoading: false,
+        error: false
     },
     reducers: {
-        
+       
     },
-    extraReducers: builder => {
-        builder
-            .addCase(fetchSubreddits.pending, (state) => {
-                state.subredditsLoading = true;
-                state.subredditsError = false;
-        } )
-            .addCase(fetchSubreddits.fulfilled, (state, action) => {
-                state.subreddits = action.payload;
-                state.subredditsLoading = false;
-                state.subredditsError = false;
-        } )
-            .addCase(fetchSubreddits.rejected, (state) => {
-                state.subredditsLoading = false;
-                state.subredditsError = true;
-        } )
+    extraReducers: (builder) => {
+        builder.addCase(fetchSubreddits.pending, (state) => {
+            state.isLoading = true;
+            state.error = false;
+        })
+        builder.addCase(fetchSubreddits.fulfilled, (state, action) => {
+            state.subreddits = action.payload;
+            state.isLoading = false;
+            state.error = false;
+        })
+        builder.addCase(fetchSubreddits.rejected, (state) => {
+            state.isLoading = false;
+            state.error = true;
+        })
     }
 })
 
-
 export const selectSubreddits = state => state.subreddits.subreddits;
-export default subreditsSlice.reducer;
+export default subredditsSlice.reducer;

@@ -1,14 +1,14 @@
 import React from "react";
 import './Subreddit.css';
-import { updateCurrentSubreddit } from "../../Features/CurrentSubredditSlice";
 import { useDispatch } from "react-redux";
+import { setSelectedSubreddit } from "../../Features/FeedSlice";
 
 export const Subreddit = (props) => {
 
     const dispatch = useDispatch();
 
     const handleClick = () => {
-        dispatch(updateCurrentSubreddit(props.name));
+        dispatch(setSelectedSubreddit(props.name))
     };
 
     return (
