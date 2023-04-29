@@ -1,4 +1,6 @@
 import './Header.css';
+import { SearchTerm } from '../SearchTerm/SearchTerm';
+import React from 'react';
 
 export function Header() {
 
@@ -17,18 +19,7 @@ export function Header() {
                     id="text-logo">
                 </img>
             </div>
-            <form onSubmit=''>
-            <label><img 
-                    src="/search-icon.png"
-                    id='search-icon'
-                    alt=''>
-                        </img></label>
-            <input
-                type="text"
-                placeholder="Search Subreddits"
-                >
-            </input>
-          </form>
+            <SearchTerm />
         </div>
     )
 }

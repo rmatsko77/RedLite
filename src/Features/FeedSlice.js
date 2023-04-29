@@ -3,9 +3,9 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 export const fetchFeed = createAsyncThunk(
     'feed/get',
     async (sub) => {
-        const data = await fetch(`https://www.reddit.com/${sub}/top.json`);
-        const res = await data.json();
-        return res.data.children.map((post) => post.data);
+        const res = await fetch(`https://www.reddit.com/${sub}/top.json`);
+        const json = await res.json();
+        return json.data.children.map((post) => post.data);
     }
 )
 

@@ -3,28 +3,25 @@ import { selectSubreddits, fetchSubreddits } from "../../Features/SubredditSlice
 import { useSelector, useDispatch } from "react-redux";
 import { Subreddit } from "../Subreddit/Subreddit";
 import './SubredditList.css'
+import store from "../../Store/store";
+import { fetchSearchTerm } from "../../Features/SearchTermSlice";
 
 export function SubredditList() {
 
     const dispatch = useDispatch();
+    const state = store.getState();
     const subreddits = useSelector(selectSubreddits);
-    let list = null;
+    let list = subreddits.map(subreddit => {
+        return <Subreddit 
+            key={subreddit.id}
+            img={subreddit.icon_img}
+            name={subreddit.display_name_prefixed}
+        />
+    });
 
     useEffect(() => {
-        dispatch(fetchSubreddits())
+      dispatch(fetchSubreddits())
     },[])
-    
-    if (!subreddits.length){
-        return;
-    } else {
-        list = subreddits.map(subreddit => {
-            return <Subreddit 
-                key={subreddit.id}
-                img={subreddit.icon_img}
-                name={subreddit.display_name_prefixed}
-            />
-        })
-    }
 
     return (
         <div className="subredditList">

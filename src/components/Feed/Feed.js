@@ -13,7 +13,7 @@ export function Feed() {
 
     useEffect(()=> {
         dispatch(fetchFeed(state.currentSubreddit.currentSubreddit));
-    }, [dispatch][state.currentSubreddit.currentSubreddit])
+    },)
 
     return(
         <div>
