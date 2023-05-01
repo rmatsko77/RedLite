@@ -1,43 +1,89 @@
 .post {
     list-style-type: none;
+    border: 1pt white solid;
     background-color: #393863;
-    border-radius: 0;
-    margin-top: -13px;
-    margin-bottom: 0;
-    min-height: 10rem;
-    padding-bottom: 0;
-    padding-top: 0;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    border-top: 1pt solid white;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 7rem;
 }
 
 .post:hover {
     background-color: #2f2f53;
 }
 
-.post .top {
-    display: inline-block;
+.post .score {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 4%;
+    padding-top: 1.5rem;
+}
 
+.post .score img {
+    max-width: 65%;
+}
+
+.post .score p {
+    font-size: .65rem;
+}
+
+.post .left-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+    height: 100%;
+    border: 1pt solid white;
+}
+
+.post .left-side img {
+    max-height: 80%;
+    max-width: 80%;
+    border-radius: 4pt;
+}
+
+.post .right-side {
+    width: 85%;
+    height: 100%;
+    display: block;
+
+}
+
+.post .right-side .top {
+    width: 100%;
+    padding: 0;
+    margin-top: .5rem;
+    margin-bottom: 0;
+}
+
+.post .right-side .top h3 {
+    font-size: 1rem;
+    padding: .3rem .5rem .3rem .5rem;
+    margin: 0;
+    background-color: #161627
+}
+
+.post .right-side .bottom {
+    display: inline-flex;
+    justify-content: start;
+    width: 100%;
+    font-size: .75rem;
+}
+
+.post .right-side .bottom .subreddit {
+    margin-right: .5rem;
+    margin-left: .5rem;
+    margin-bottom: 0;
     margin-top: 0;
-    padding-top: 0;
-
+    padding-top: .2rem;
 }
 
-.post .top .subreddit {
-    padding-right: .5rem;
-}
-
-.post .top .author {
-    padding-right: .5rem;
-}
-
-a:visited {
-    color: white;
-}
-
-a {
-    color: white;
-    text-decoration: none;
-
+.post .right-side .bottom .author {
+    margin-right: .5rem;
+    margin-left: .5rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: .2rem;
 }

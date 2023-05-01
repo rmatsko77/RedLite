@@ -1,0 +1,13 @@
+.feed {
+    width: 100%;
+    margin-left: 1rem;
+}
+
+.feed ul {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.feed .feed-title {
+    text-align: center;
+}

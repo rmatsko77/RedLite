@@ -8,7 +8,11 @@ export const Subreddit = (props) => {
     const dispatch = useDispatch();
 
     const handleClick = () => {
+        if(props.name == 'r/Home') {
+            dispatch(setSelectedSubreddit('r/popular'))
+        } else {
         dispatch(setSelectedSubreddit(props.name))
+        }
     };
 
     return (

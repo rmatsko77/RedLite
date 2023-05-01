@@ -1,0 +1,22 @@
+.feed-error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(60, 60, 60);
+    height: 17rem;
+    width: 100%;
+    border-radius: 5pt;
+    margin-top: .6rem;
+    margin-left: .4rem;
+}
+
+.feed-error img {
+    height: 3rem;
+    max-width: 25%;
+}
+
+.feed-error h4 {
+    font-size: 1.5rem;
+    padding-bottom: .7rem;
+    margin-left: 1rem;
+}

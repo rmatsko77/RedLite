@@ -4,6 +4,8 @@ import { setSelectedSubreddit, setSearchTerm, selectFeed, fetchFeed, selectSelec
 import { Post } from '../Post/Post.js'
 import store from "../../Store/store";
 import { FeedLoading } from "../FeedLoading/FeedLoading";
+import { FeedError } from "../FeedError/FeedError";
+import './Feed.css'
 
 export function Feed() {
 
@@ -18,21 +20,47 @@ export function Feed() {
 
     if(isLoading) {
         return (
-            <FeedLoading />
+            <div className="feed">
+                <ul>
+                    <h3 className="feed-title">Your feed is Loading...</h3>
+                    <FeedLoading />
+                    <FeedLoading />
+                    <FeedLoading />
+                    <FeedLoading />
+                    <FeedLoading />
+                    <FeedLoading />
+                    <FeedLoading />
+                    <FeedLoading />
+                    <FeedLoading />
+                    <FeedLoading />
+                </ul>
+            </div>
         )
-    } else {
+    } 
+    if(error) {
         return (
-        <ul>
-            <h3>Top Posts in {selectedSubreddit}</h3>
-            {feed.feed.map(post => {
-            const title = post.title;
-            const subreddit = post.subreddit_name_prefixed;
-            const author = post.author;
-            return <Post 
-                title={title}
-                subreddit={subreddit}
-                author={author}
-                />})}
-        </ul>
+            <FeedError />
+        )
+    }
+    else {
+        return (
+            <div className="feed">
+                <ul>
+                    <h3 className="feed-title">Top Posts in {selectedSubreddit}</h3>
+                    {feed.feed.map(post => {
+                    const title = post.title;
+                    const subreddit = post.subreddit_name_prefixed;
+                    const author = post.author;
+                    const thumbnail = post.thumbnail;
+                    const score = post.score;
+                    return <Post 
+                        title={title}
+                        subreddit={subreddit}
+                        author={author}
+                        thumbnail={thumbnail}
+                        score={score}
+                        />})}
+                </ul>
+            </div>
         )}
 }
