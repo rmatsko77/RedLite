@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSelectedSubreddit, setSearchTerm, selectFeed, fetchFeed, selectSelectedSubreddit } from "../../Features/FeedSlice";
 import { Post } from '../Post/Post.js'
 import store from "../../Store/store";
+import { FeedLoading } from "../FeedLoading/FeedLoading";
 
 export function Feed() {
 
@@ -17,7 +18,7 @@ export function Feed() {
 
     if(isLoading) {
         return (
-            <p>Page loading</p>
+            <FeedLoading />
         )
     } else {
         return (

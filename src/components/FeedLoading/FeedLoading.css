@@ -1,0 +1,9 @@
+.loadingPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15rem;
+    width: 100%;
+    border: 1pt solid white;
+    margin: 3rem;
+}

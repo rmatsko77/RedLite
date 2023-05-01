@@ -13,11 +13,13 @@ export function SubredditList() {
         const name = sub.display_name_prefixed;
         const icon = sub.icon_img;
         const id = sub.id;
-        return <Subreddit
-            name={name}
-            icon={icon}
-            id={id}
-        />
+        return (
+            <Subreddit
+                name={name}
+                icon={icon}
+                id={id}
+            />
+        )
     })
 
     useEffect(() => {
@@ -25,8 +27,10 @@ export function SubredditList() {
     }, [])
 
     return (
-        <ul className="subredditList">
-            {subredditsList}
-        </ul>
+        <div className="subredditList">
+            <ul>
+                {subredditsList}
+            </ul>
+        </div>
     )
 }
