@@ -11,12 +11,12 @@ export function Feed() {
 
     const dispatch = useDispatch();
     const feed = useSelector((state) => state.feed);
-    const { isLoading, error, searchTerm, selectedSubreddit } = feed;
+    const { isLoading, error, searchTerm, selectedSubreddit, filter } = feed;
     const state = store.getState();
 
     useEffect(() => {
-        dispatch(fetchFeed(selectedSubreddit))
-    }, [selectedSubreddit])
+        dispatch(fetchFeed({selectedSubreddit, filter}))
+    }, [selectedSubreddit, filter])
 
     if(isLoading) {
         return (
@@ -46,7 +46,7 @@ export function Feed() {
         return (
             <div className="feed">
                 <ul>
-                    <h3 className="feed-title">Top Posts in {selectedSubreddit}</h3>
+                    <h3 className="feed-title">{filter} posts in {selectedSubreddit}</h3>
                     {feed.feed.map(post => {
                     const title = post.title;
                     const subreddit = post.subreddit_name_prefixed;

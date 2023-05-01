@@ -1,0 +1,59 @@
+.filter {
+    padding: 0;
+    background-color: rgba(94, 94, 94, 0.325);
+    width: 100%;
+}
+
+.filter .filter-text {
+    text-align: center;
+    padding: 0;
+    width: 100%;
+}
+
+.filter .filter-text p {
+    padding: 0;
+    margin: 0;
+}
+
+.filter .containter {
+    display: flex;
+    justify-content: space-around;
+}
+
+.filter .card {
+    margin: .2rem .2rem .2rem .2rem;
+    padding: .7rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5pt;
+    background-color: #504dff76;;
+
+}
+
+.filter .active {
+    background-color: #504dffed;
+    border: 1pt solid white;
+}
+
+.filter .card:hover {
+    background-color: #504dffed;
+    cursor: pointer;
+}
+
+.filter .card:focus {
+    background-color: #504dff;
+    cursor: pointer;
+}
+
+.filter .card img {
+    height: 2.5rem;
+    margin: 0;
+    padding: 0;
+
+}
+
+.filter .card p {
+    margin: 0;
+
+}
