@@ -6,15 +6,13 @@ export function FeedLoading() {
     return (
         <li className="post">
             <div className="score">
-                <img src="/arrow-icon.png"></img>
-                <p></p>
             </div>
             <div className="left-side">
                 <img src=''></img>
             </div>
             <div className="right-side">
                 <div className="top">
-                    <h3 className="title">Loading...</h3>
+                <div class="loader"><span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span></div>
                 </div>
                 <div className="bottom">
                 <p className="subreddit"></p>  

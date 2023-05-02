@@ -11,3 +11,8 @@
 .feed .feed-title {
     text-align: center;
 }
+
+.feed .loading-title {
+    text-align: center;
+    color: black;
+}

@@ -22,7 +22,7 @@ export function Feed() {
         return (
             <div className="feed">
                 <ul>
-                    <h3 className="feed-title">Your feed is Loading...</h3>
+                    <h3 className="loading-title">Loading</h3>
                     <FeedLoading />
                     <FeedLoading />
                     <FeedLoading />
@@ -53,12 +53,24 @@ export function Feed() {
                     const author = post.author;
                     const thumbnail = post.thumbnail;
                     const score = post.score;
+                    const fullImage = post.url
+                    const gif = post.url_overridden_by_dest
+                    const mediaType = post.post_hint
+                    const domain = post.domain
+                    const galleryData = post.gallery_data
+                    const text = post.selftext
                     return <Post 
                         title={title}
                         subreddit={subreddit}
                         author={author}
                         thumbnail={thumbnail}
                         score={score}
+                        fullImage={fullImage}
+                        gif={gif}
+                        mediaType={mediaType}
+                        domain={domain}
+                        galleryData={galleryData}
+                        text={text}
                         />})}
                 </ul>
             </div>
