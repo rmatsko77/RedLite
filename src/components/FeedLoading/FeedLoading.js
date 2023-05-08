@@ -12,10 +12,10 @@ export function FeedLoading() {
             </div>
             <div className="right-side">
                 <div className="top">
-                <div class="loader"><span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span></div>
+                    <div class="loader"><span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span></div>
                 </div>
                 <div className="bottom">
-                <p className="subreddit"></p>  
+                    <p className="subreddit"></p>  
                     <p className="author" target='_blank'></p>                 
                 </div>
             </div>

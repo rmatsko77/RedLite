@@ -9,6 +9,7 @@
     height: 8rem;
     border-radius: 3pt;
     width: 97%;
+    overflow: hidden;
 }
 
 .active .post {
@@ -19,6 +20,7 @@
     align-items: center;
     height: 40rem;
     width: 97%;
+    overflow: hidden;
 }
 
 .active .post .score {
@@ -35,11 +37,13 @@
 }
 
 .active .post .media {
-    width: 100%;
-    height: 88%;
+    max-width: 100%;
+    max-height: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 0;
+    padding-top: 0;
 }
 
 .inactive .post .media {
@@ -94,7 +98,6 @@
     width: 85%;
     height: 100%;
     display: block;
-
 }
 
 .post .right-side .top {
@@ -144,9 +147,9 @@
 }
 
 .active .media img {
-    max-width: 80%;
-    max-height: 80%;
-    padding-bottom: 2rem;
+    max-width: 90%;
+    max-height: 90%;
+    padding-bottom: 0;
 }
 
 .active .media .gif {
@@ -158,7 +161,7 @@
 .active .media .reddit-video {
     max-width: 100%;
     max-height: 80%;
-
+    margin-top: 0;
 }
 
 .active .media .link {
@@ -188,4 +191,54 @@
     max-width: 100%;
     max-height: 100%;
     margin-bottom: 4rem;
+}
+
+.inactive .comments-button {
+    display: none;
+}
+
+.active .hidden {
+    display: none;
+}
+
+.inactive .hidden {
+    display: none;
+}
+
+.inactive .show {
+    display: none;
+}
+
+.active .post .comments-button {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-top: 35.5rem;
+    margin-right: .25rem;
+    background-color: #161627;
+    color: white;
+    border: none;
+    height: 10%;
+    width: 15%;
+    cursor: pointer;
+    border-radius: 4pt;
+    font-size: .7rem;
+
+}
+
+.active .post .comments-button:hover {
+    background-color: #0c0c15;
+}
+
+.active .post .comments-button .comment-icon {
+    border-radius: 0;
+    height: 70%;
+    padding-bottom: 0;
+    margin-bottom: 0;
+
+}
+
+.active #comments {
+    overflow: scroll;
+    height: 20rem;
 }

@@ -9,7 +9,7 @@ export function SubredditList() {
 
     const dispatch = useDispatch();
     const subreddits = useSelector(selectSubreddits);
-    const subredditsList = subreddits.map(sub => {
+    const subredditsList = subreddits.slice(0,15).map(sub => {
         const name = sub.display_name_prefixed;
         const icon = sub.icon_img;
         const id = sub.id;

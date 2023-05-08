@@ -10,6 +10,15 @@ export const fetchFeed = createAsyncThunk(
     }
 )
 
+export const fetchComments = createAsyncThunk(
+    'feed/fetchComments',
+    async (permalink) => {
+        const res = await fetch(`https://www.reddit.com${permalink}.json`)
+        const json = await res.json()
+        return json[1].data.children.map(comments => comments.data)
+    }
+)
+
 const feedSlice =  createSlice({
     name: 'feed',
     initialState: {
@@ -17,8 +26,11 @@ const feedSlice =  createSlice({
         selectedSubreddit: 'r/popular',
         searchTerm: '',
         filter: 'top',
+        comments: [],
         isLoading: false,
         error: false,
+        commentsIsLoading: false,
+        commentsIsError: false
     },
     reducers: {
         setSelectedSubreddit(state, action) {
@@ -44,6 +56,19 @@ const feedSlice =  createSlice({
         builder.addCase(fetchFeed.rejected, (state) => {
             state.isLoading = false;
             state.error = true;
+        })
+        builder.addCase(fetchComments.pending, (state) =>{
+            state.commentsIsLoading = true;
+            state.commentsIsError = false;
+        })
+        builder.addCase(fetchComments.fulfilled, (state, action) => {
+            state.comments = action.payload;
+            state.commentsIsLoading = false;
+            state.CommentsIsError = false;
+        })
+        builder.addCase(fetchComments.rejected, (state) => {
+            state.commentsIsLoading = false;
+            state.commentsIsError = true;
         })
     }
 })

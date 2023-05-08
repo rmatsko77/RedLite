@@ -59,6 +59,9 @@ export function Feed() {
                     const domain = post.domain
                     const galleryData = post.gallery_data
                     const text = post.selftext
+                    const permalink = post.permalink
+                    const id = post.id
+                    const media = post.media
                     return <Post 
                         title={title}
                         subreddit={subreddit}
@@ -71,6 +74,9 @@ export function Feed() {
                         domain={domain}
                         galleryData={galleryData}
                         text={text}
+                        permalink={permalink}
+                        id={id}
+                        media={media}
                         />})}
                 </ul>
             </div>

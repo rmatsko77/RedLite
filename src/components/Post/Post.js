@@ -1,15 +1,55 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import ReactDOM from "react-dom";
+import { fetchComments } from "../../Features/FeedSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { Comment } from "../Comments/Comment";
+import { CommentsLoading } from "../Comments/CommentsLoading.js";
 import './Post.css'
 
 export const Post = (props) => {
     const [isActive, setIsActive] = useState('inactive')
+    const [showComments, setShowComments] = useState('hidden')
+    const dispatch = useDispatch();
+    const feed = useSelector((state) => state.feed)
+    const { commentsIsLoading, commentsIsError } = feed
+    const ref = useRef(null);
     let title = ''
     let thumbnail = ''
     let score = ''
+    const permalink = props.permalink
     const media = props.mediaType
+    
+    const handleOffClick = (event) => {
+        if (ref.current.contains(event.target)) {
+          return
+        }
+        setIsActive('inactive');
+        setShowComments('hidden')
+    }
+    
+    useEffect(() => {
+        document.addEventListener('click', handleOffClick)
+    
+        return () => {
+          document.removeEventListener('click', handleOffClick)
+        }
+      }, [])
 
-    if(props.title.length > 90) {
-        title = props.title.slice(0,90) + '...'
+    const toggleComments = (event) => {
+        event.cancelBubble = true;
+        if(event.stopPropagation) event.stopPropagation();
+
+        if(showComments === 'hidden') {
+            dispatch(fetchComments(permalink))
+            setShowComments('show')
+        }
+        if(showComments === 'show')
+            setShowComments('hidden')
+
+    }
+
+    if(props.title.length > 100) {
+        title = props.title.slice(0,100) + '...'
     } else {
         title = props.title
     }
@@ -37,12 +77,14 @@ export const Post = (props) => {
     }
 
     const handleClick = () => {
+
         if (isActive === 'inactive') {
             setIsActive('active')
-        } else {
+        } if(isActive === 'active') {
             setIsActive('inactive')
+        } if(showComments === 'show') {
+            setShowComments('hidden')
         }
-      
     }
 
     const checkMediaType = () => {
@@ -63,10 +105,9 @@ export const Post = (props) => {
             )
         }
         if(media === 'hosted:video') {
-            const video = props.fullImage + '/DASH_480.mp4?source=fallback'
             return (
                 <video className="reddit-video" controls>
-                    <source src={video} type="video/mp4" ></source>
+                    <source src={props.media.reddit_video.fallback_url} type="video/mp4" ></source>
                 </video>
             )
         }
@@ -131,34 +172,92 @@ export const Post = (props) => {
                 <p className="text">{props.text}</p>
             )
         }
-
         }
-  
 
+    if(commentsIsLoading) {
+        return (
+            <div className={isActive} id={title}>
+                    <li className="post" >
+                        <div className="left-side">
+                            <img src={thumbnail}></img>
+                        </div>
+                        <div className="right-side">
+                            <div className="top">
+                                <p className="subreddit">{props.subreddit}</p>  
+                                <p className="author" target='_blank'>Posted by: u/{props.author}</p>                 
+                            </div>
+                            <div className="bottom">
+                                <h3 className="title">{title}</h3>
+                            </div>
+                            <div className="media">
+                                {checkMediaType()}
+                            </div>
+                        </div>
+                        <button className="comments-button" onClick={toggleComments}><img className="comment-icon" src="/comments-icon.png"></img>Comments</button>
+                        <div className="score">
+                            <img src="/arrow-icon.png"></img>
+                            <p>{score}</p>
+                        </div>
+                    </li>
+                <div className={showComments} id="comments">
+                    <CommentsLoading />
+                    <CommentsLoading />
+                    <CommentsLoading />
+                    <CommentsLoading />
+                    <CommentsLoading />
+                    <CommentsLoading />
+                    <CommentsLoading />
+                    <CommentsLoading />
+                    <CommentsLoading />
+                    <CommentsLoading />
+                </div>
+            </div>
+        )
+    }
+
+    else {
     return (
-        <div className={isActive} id={title} onClick={handleClick}>
-            <li className="post">
-                <div className="left-side">
-                    <img src={thumbnail}></img>
-                </div>
-                <div className="right-side">
-                    <div className="top">
-                        <p className="subreddit">{props.subreddit}</p>  
-                        <p className="author" target='_blank'>Posted by: u/{props.author}</p>                 
+        <div className={isActive} id={title} onClick={handleClick} ref={ref}>
+                <li className="post" id={isActive}>
+                    <div className="left-side">
+                        <img src={thumbnail}></img>
                     </div>
-                    <div className="bottom">
-                        <h3 className="title">{title}</h3>
+                    <div className="right-side">
+                        <div className="top">
+                            <p className="subreddit">{props.subreddit}</p>  
+                            <p className="author" target='_blank'>Posted by: u/{props.author}</p>                 
+                        </div>
+                        <div className="bottom">
+                            <h3 className="title">{title}</h3>
+                        </div>
+                        <div className="media">
+                            {checkMediaType()}
+                        </div>
                     </div>
-                    
-                    <div className="media">
-                        {checkMediaType()}
+                    <button className="comments-button" onClick={toggleComments}><img className="comment-icon" src="/comments-icon.png"></img>Comments</button>
+                    <div className="score">
+                        <img src="/arrow-icon.png"></img>
+                        <p>{score}</p>
                     </div>
-                </div>
-                <div className="score">
-                    <img src="/arrow-icon.png"></img>
-                    <p>{score}</p>
-                </div>
-            </li>
+                </li>
+            <div className={showComments} id="comments">
+                <ul>
+                    {feed.comments.slice(0,15).map(comments => {
+                        const body = comments.body
+                        const author = comments.author
+                        const ups = comments.ups
+                        const replies = comments.replies
+
+                        return (
+                            <Comment
+                                body={body}
+                                author={author}
+                                ups={ups}
+                            />
+                        )
+                    })}
+                </ul>
+            </div>
         </div>
     )
-}
+}}
