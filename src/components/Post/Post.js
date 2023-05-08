@@ -1,10 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import ReactDOM from "react-dom";
-import { fetchComments } from "../../Features/FeedSlice";
+import { fetchComments, setSelectedSubreddit } from "../../Features/FeedSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Comment } from "../Comments/Comment";
 import { CommentsLoading } from "../Comments/CommentsLoading.js";
 import './Post.css'
+import { CommentsEmpty } from "../Comments/CommentsEmpty";
 
 export const Post = (props) => {
     const [isActive, setIsActive] = useState('inactive')
@@ -13,11 +14,12 @@ export const Post = (props) => {
     const feed = useSelector((state) => state.feed)
     const { commentsIsLoading, commentsIsError } = feed
     const ref = useRef(null);
-    let title = ''
+    let title = props.title
     let thumbnail = ''
     let score = ''
     const permalink = props.permalink
     const media = props.mediaType
+    let commentList = '';
     
     const handleOffClick = (event) => {
         if (ref.current.contains(event.target)) {
@@ -48,12 +50,6 @@ export const Post = (props) => {
 
     }
 
-    if(props.title.length > 100) {
-        title = props.title.slice(0,100) + '...'
-    } else {
-        title = props.title
-    }
-
     if(props.score > 9999) {
         const string = props.score.toString();
         const slice =  string.slice(0,2) + '.' + string.slice(2)
@@ -73,13 +69,14 @@ export const Post = (props) => {
     } if (props.thumbnail.includes('external') || props.thumbnail.includes('self') || props.thumbnail.includes('default') || !props.thumbnail){
         thumbnail = '/post-icon.png'
     } if (props.thumbnail.includes('nsfw')) {
-        thumbnail = 'nsfw-icon.png'
+        thumbnail = '/nsfw-icon.png'
     }
 
     const handleClick = () => {
 
         if (isActive === 'inactive') {
             setIsActive('active')
+            document.getElementById(title).scrollIntoView(false)
         } if(isActive === 'active') {
             setIsActive('inactive')
         } if(showComments === 'show') {
@@ -174,6 +171,25 @@ export const Post = (props) => {
         }
         }
 
+        if(feed.comments) {
+            commentList = feed.comments.slice(0,15).map(comments => {
+                const body = comments.body
+                const author = comments.author
+                const ups = comments.ups
+                const replies = comments.replies
+              
+                return (
+                    <Comment
+                        body={body}
+                        author={author}
+                        ups={ups}
+                    />
+                )
+            })
+        } if(!feed.comments.length) {
+            commentList = <CommentsEmpty />
+        }
+
     if(commentsIsLoading) {
         return (
             <div className={isActive} id={title}>
@@ -224,8 +240,8 @@ export const Post = (props) => {
                     </div>
                     <div className="right-side">
                         <div className="top">
-                            <p className="subreddit">{props.subreddit}</p>  
-                            <p className="author" target='_blank'>Posted by: u/{props.author}</p>                 
+                            <p className="subreddit" onClick={() => dispatch(setSelectedSubreddit(props.subreddit))}>{props.subreddit}</p>  
+                            <p className="author">Posted by: u/{props.author}</p>                 
                         </div>
                         <div className="bottom">
                             <h3 className="title">{title}</h3>
@@ -242,20 +258,7 @@ export const Post = (props) => {
                 </li>
             <div className={showComments} id="comments">
                 <ul>
-                    {feed.comments.slice(0,15).map(comments => {
-                        const body = comments.body
-                        const author = comments.author
-                        const ups = comments.ups
-                        const replies = comments.replies
-
-                        return (
-                            <Comment
-                                body={body}
-                                author={author}
-                                ups={ups}
-                            />
-                        )
-                    })}
+                    {commentList}
                 </ul>
             </div>
         </div>

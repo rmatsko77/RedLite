@@ -1,8 +1,13 @@
 import React from "react";
+import store from "../../Store/store";
 import './Comment.css'
+import { selectComments } from "../../Features/FeedSlice";
+import { useSelector } from "react-redux";
 
 export function Comment(props) {
     let score = ''
+    const state = store.getState();
+    const comments = useSelector(selectComments)
 
     if(props.ups > 9999) {
         const string = props.ups.toString();
@@ -18,16 +23,19 @@ export function Comment(props) {
         score = props.ups
     }
 
-    return (
-        <div className="comment">
-            <div className="top">
-                <p className="author">u/{props.author}</p>
-                <div className="score">
-                    <img src='/arrow-icon.png'></img>
-                    <p className="props">{score}</p>
+    if(comments.length) {
+
+        return (
+            <div className="comment">
+                <div className="top">
+                    <p className="author">u/{props.author}</p>
+                    <div className="score">
+                        <img src='/arrow-icon.png'></img>
+                        <p className="props">{score}</p>
+                    </div>
                 </div>
+                <p className="body">{props.body}</p>
             </div>
-            <p className="body">{props.body}</p>
-        </div>
-    )
-}
+        )
+    }
+} 

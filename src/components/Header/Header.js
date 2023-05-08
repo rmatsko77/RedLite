@@ -1,8 +1,10 @@
 import './Header.css';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { selectSearchTerm, setSearchTerm, setSelectedSubreddit } from '../../Features/FeedSlice';
+import { fetchSearch } from '../../Features/SearchSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import store from '../../Store/store';
+import { SearchResults } from '../SearchResults/SearchResults';
 
 export function Header() {
 
@@ -13,6 +15,10 @@ export function Header() {
     const handleChange = (e) => {
         dispatch(setSearchTerm(e.target.value))
     }
+
+    useEffect(() =>{
+        dispatch(fetchSearch(state.feed.searchTerm))
+    }, [state.feed.searchTerm])
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -34,16 +40,19 @@ export function Header() {
                     id="text-logo">
                 </img>
             </div>
-            <form onSubmit={handleSubmit}>
-                    <img src='/search-icon.png' id='search-icon'></img>
-                    <input
-                    onChange={handleChange}
-                    placeholder='Search Subreddits'
-                    value={term}
-                    
-                    >
-                    </input>
-                </form>
+            <form onSubmit={handleSubmit} >
+                <img src='/search-icon.png' id='search-icon'></img>
+                <input
+                className='search-bar'
+                onChange={handleChange}
+                placeholder='Search Subreddits'
+                value={term}                    
+                >
+                </input>
+                <div className='search-box'>
+                    <SearchResults />
+                </div>
+            </form>
         </div>
     )
 }

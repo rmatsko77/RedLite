@@ -36,7 +36,7 @@
 }
 
 .header input {
-    width: 15rem;
+    width: 20rem;
     height: 2rem;
     float: right;
     margin-left: 0;
@@ -72,3 +72,17 @@
 .header form {
     position: relative;
 }
+
+.search-bar:focus + .search-box {
+    display: block;
+    width: 100%;
+    position: absolute;
+}
+
+.search-box {
+    display: none;
+}
+
+
+
+

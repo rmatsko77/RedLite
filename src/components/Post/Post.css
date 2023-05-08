@@ -12,6 +12,14 @@
     overflow: hidden;
 }
 
+.post:hover {
+    cursor: pointer;
+}
+
+.active .post .comment .no-comments {
+    color: red
+}
+
 .active .post {
     list-style-type: none;
     background-color: #2f2f53;
@@ -240,5 +248,6 @@
 
 .active #comments {
     overflow: scroll;
-    height: 20rem;
+    min-height: auto;
+    max-height: 25rem;
 }

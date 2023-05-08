@@ -64,7 +64,7 @@ const feedSlice =  createSlice({
         builder.addCase(fetchComments.fulfilled, (state, action) => {
             state.comments = action.payload;
             state.commentsIsLoading = false;
-            state.CommentsIsError = false;
+            state.commentsIsError = false;
         })
         builder.addCase(fetchComments.rejected, (state) => {
             state.commentsIsLoading = false;
@@ -77,4 +77,5 @@ export const { setSelectedSubreddit, setSearchTerm, setFilter } = feedSlice.acti
 export const selectFeed = state => state.feed.feed;
 export const selectSelectedSubreddit = state => state.feed.selectedSubreddit;
 export const selectSearchTerm =  state => state.feed.searchTerm;
+export const selectComments = state => state.feed.comments
 export default feedSlice.reducer;
