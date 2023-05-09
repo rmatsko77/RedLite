@@ -2,11 +2,17 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    background-color: rgba(40, 40, 40, 0.978);
     justify-content: center;
     padding-left: 0;
     margin-top: 2.4rem;
+}
 
+#light .results-list {
+    background-color: rgba(197, 197, 197, 0.978);
+}
+
+#dark .results-list {
+    background-color: rgba(40, 40, 40, 0.978);
 }
 
 .results-list .result {
@@ -19,10 +25,17 @@
 
 .results-list .result:hover {
     display: flex;
-    background-color: rgb(24, 24, 24);
     margin: 1%;
     cursor: pointer;
 
+}
+
+#light .results-list .result:hover {
+    background-color: rgb(208, 208, 208);
+}
+
+#dark .results-list .result:hover {
+    background-color: rgb(24, 24, 24);
 }
 
 .results-list .result img {

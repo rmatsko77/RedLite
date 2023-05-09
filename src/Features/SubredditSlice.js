@@ -13,7 +13,7 @@ const subredditsSlice = createSlice({
     name: 'subreddits',
     initialState: {
         subreddits: [],
-        isLoading: false,
+        isLoading: true,
         error: false
     },
     reducers: {

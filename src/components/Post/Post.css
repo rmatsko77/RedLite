@@ -1,6 +1,5 @@
 .inactive .post {
     list-style-type: none;
-    background-color: #393863;
     display: flex;
     margin-top: .25rem;
     margin-bottom: .25rem;
@@ -12,23 +11,38 @@
     overflow: hidden;
 }
 
+#light .inactive .post {
+    background-color: #d9dce4;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+#dark .inactive .post {
+    background-color: #4e4e4e;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
 .post:hover {
     cursor: pointer;
 }
 
-.active .post .comment .no-comments {
-    color: red
-}
-
 .active .post {
     list-style-type: none;
-    background-color: #2f2f53;
     display: flex;
     justify-content: start;
     align-items: center;
     height: 40rem;
     width: 97%;
     overflow: hidden;
+}
+
+#light .active .post {
+    background-color: #6d6bffbc;
+}
+
+#dark .active .post {
+    background-color: #2f2f53;
 }
 
 .active .post .score {
@@ -58,7 +72,12 @@
     display: none;
 }
 
-.post:hover {
+#light .inactive .post:hover {
+    background-color: #807efecb;
+    box-shadow: #393863;
+}
+
+#dark .inactive .post:hover {
     background-color: #2f2f53;
     box-shadow: #393863;
 }
@@ -71,9 +90,39 @@
     width: 7%;
     height: 81.1%;
     padding-top: 1.5rem;
-    background-color: #161627;
     border-top-right-radius: 3pt;
     border-bottom-right-radius: 3pt;
+}
+
+#light .inactive .post .score {
+    background-color: #6e6e6ed0;
+    color: rgb(0, 0, 0);
+    transition: background-color .5s, color .5s;
+}
+
+#light .inactive:hover .post .score {
+    background-color: #5b5ba8;
+    color: white;
+}
+
+#dark .inactive:hover .post .score {
+    background-color: #5b5ba8;
+    color: white;
+}
+
+#dark .inactive .post .score {
+    background-color: #6a6a6a;
+    color: white;
+    transition: background-color .5s, color .5s;
+}
+
+#light .active .post .score {
+    background-color: #5b5ba8;
+    color: white;
+}
+
+#dark .active .post .score {
+    background-color: #161627;
 }
 
 .post .score img {
@@ -81,11 +130,11 @@
 }
 
 .inactive .post .score p {
-    font-size: 75%;
+    font-size: 70%;
 }
 
 .active .post .score p {
-    font-size: 100%;
+    font-size: 85%;
 }
 
 .post .left-side {
@@ -127,6 +176,11 @@
     font-weight: bold;
 }
 
+.post .right-side .top .subreddit:hover {
+    font-style: italic;
+    text-decoration: underline;
+}
+
 .post .right-side .top .author {
     font-style: italic;
 }
@@ -138,7 +192,7 @@
 
 .post .right-side .bottom .title {
     width: 95%;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 500;
     padding-top: 0;
     margin-top: 0.75rem;
@@ -223,8 +277,6 @@
     flex-direction: column;
     margin-top: 35.5rem;
     margin-right: .25rem;
-    background-color: #161627;
-    color: white;
     border: none;
     height: 10%;
     width: 15%;
@@ -234,8 +286,22 @@
 
 }
 
-.active .post .comments-button:hover {
-    background-color: #0c0c15;
+#light .active .post .comments-button {
+    background-color: rgb(185, 185, 185);
+}
+
+#dark .active .post .comments-button {
+    background-color: #161627;
+    color: white;
+}
+
+#light .active .post .comments-button:hover {
+    background-color: rgb(138, 138, 138);
+}
+
+#dark .active .post .comments-button:hover {
+    background-color: #000000;
+    border: .5pt solid white;
 }
 
 .active .post .comments-button .comment-icon {

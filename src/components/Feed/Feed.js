@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectedSubreddit, setSearchTerm, selectFeed, fetchFeed, selectSelectedSubreddit } from "../../Features/FeedSlice";
+import { fetchFeed } from "../../Features/FeedSlice";
 import { Post } from '../Post/Post.js'
-import store from "../../Store/store";
 import { FeedLoading } from "../FeedLoading/FeedLoading";
 import { FeedError } from "../FeedError/FeedError";
 import './Feed.css'
@@ -11,8 +10,7 @@ export function Feed() {
 
     const dispatch = useDispatch();
     const feed = useSelector((state) => state.feed);
-    const { isLoading, error, searchTerm, selectedSubreddit, filter } = feed;
-    const state = store.getState();
+    const { isLoading, error, selectedSubreddit, filter } = feed;
 
     useEffect(() => {
         dispatch(fetchFeed({selectedSubreddit, filter}))

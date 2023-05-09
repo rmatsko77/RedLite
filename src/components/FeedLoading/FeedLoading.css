@@ -1,6 +1,5 @@
 .post {
     list-style-type: none;
-    background-color: #393863;
     display: flex;
     margin-top: .25rem;
     margin-bottom: .25rem;
@@ -8,6 +7,14 @@
     align-items: center;
     height: 8rem;
     border-radius: 3pt;
+}
+
+#light .post {
+    background-color: #d0d2d8;
+}
+
+#dark .post {
+    background-color: #4e4e4e;
 }
 
 .post:hover {

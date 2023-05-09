@@ -2,15 +2,22 @@
     font-size: 1rem;
     width: 100%;
     display: block;
+    margin: 0 .25rem 0 .25rem;
     
 }
 
 .subredditList ul {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
     margin-left: 0;
+    margin-right: 0;
     padding-left: 0;
+    padding-right: 0;
     list-style-type: none;
     margin-top: .6rem;
+
 }
 
 .subredditList li {
@@ -19,19 +26,37 @@
 }
 
 .subredditList button {
-    width: 98%;
+    position: relative;
+    width: 100%;
     height: 3rem;
-    background-color: rgba(94, 94, 94, 0.325);
-    color: white;
     border-radius: 0;
     margin-top: 0;
     margin-bottom: 0;
+    margin-right: 0;
     cursor: pointer;
     border: none;
+    overflow: hidden;
 }
 
-.subredditList button:hover {
+#light .subredditList button {
+    background-color: white;
+    transition: background-color .5s, color .5s;
+
+}
+
+#dark .subredditList button {
+    background-color: rgba(94, 94, 94, 0.425);
+    color: white;
+    transition: background-color .5s, color .5s;
+  
+}
+
+#light .subredditList button:hover {
+    background-color: #504dffb3; 
+    border: black;
+}
+
+#dark .subredditList button:hover {
     background-color: #504dffb0;
     border: black;
-
 }

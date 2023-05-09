@@ -2,21 +2,28 @@
     width: 100%;
     height: 54rem;
     margin-left: 1rem;
+    padding-top: 0;
     overflow-x: hidden;
     overflow-y: auto;
 }
 
 .feed ul {
     margin-left: 0;
+    margin-top: 0;
     padding-left: 0;
     
 }
 
 .feed .feed-title {
     text-align: center;
+    margin-top: .5rem;
+    margin-bottom: .7rem;
+
 }
 
 .feed .loading-title {
     text-align: center;
-    color: black;
+    color: rgba(0, 0, 0, 0);
+    margin-top: .5rem;
+    margin-bottom: .7rem;
 }

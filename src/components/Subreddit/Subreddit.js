@@ -6,9 +6,14 @@ import { setSelectedSubreddit } from "../../Features/FeedSlice";
 export const Subreddit = (props) => {
 
     const dispatch = useDispatch();
+    let name = props.name;
+
+    if(props.name === 'r/Home') {
+        name = 'r/popular'
+    }
 
     const handleClick = () => {
-        if(props.name == 'r/Home') {
+        if(props.name === 'r/Home') {
             dispatch(setSelectedSubreddit('r/popular'))
         } else {
         dispatch(setSelectedSubreddit(props.name))
@@ -19,7 +24,7 @@ export const Subreddit = (props) => {
         <li>
             <button onClick={handleClick}>
                 <img src={props.img} alt=""></img>
-                <span>{props.name}</span>
+                <span>{name}</span>
             </button>
         </li>
     )

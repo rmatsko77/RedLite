@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import ReactDOM from "react-dom";
 import { fetchComments, setSelectedSubreddit } from "../../Features/FeedSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Comment } from "../Comments/Comment";
@@ -12,7 +11,7 @@ export const Post = (props) => {
     const [showComments, setShowComments] = useState('hidden')
     const dispatch = useDispatch();
     const feed = useSelector((state) => state.feed)
-    const { commentsIsLoading, commentsIsError } = feed
+    const { commentsIsLoading } = feed
     const ref = useRef(null);
     let title = props.title
     let thumbnail = ''
@@ -110,34 +109,33 @@ export const Post = (props) => {
         }
         if(props.domain.includes('youtube') || props.domain.includes('youtu.be')) {
             const url = props.fullImage
-            let baseUrl = 'https://www.youtube.com/embed/';
+            const baseUrl = 'https://www.youtube.com/embed/';
             let realUrl = ''
 
             if(url[13] === '.') {
                 const urlSuffix = url.slice(17, url.len)
-                const realUrl = baseUrl.concat(urlSuffix)
+                realUrl = baseUrl.concat(urlSuffix)
 
                 return (
-                        <iframe src={realUrl} className="youtube-video" width="640" height="385" controls>
+                        <iframe title={props.name} src={realUrl} className="youtube-video" width="640" height="385" controls>
                         </iframe>
                 )
             }
             if(url[17] === 'b') {
                 const urlSuffix = url.slice(32, url.len)
-                const realUrl = baseUrl.concat(urlSuffix)
+                realUrl = baseUrl.concat(urlSuffix)
 
                 return (
-                        <iframe src={realUrl} className="youtube-video" width="640" height="385" controls>
+                        <iframe title={props.name} src={realUrl} className="youtube-video" width="640" height="385" controls>
                         </iframe>
                 )
             }
             if(url[8] === 'm') {
                 const urlSuffix = url.slice(30, url.len)
-                const realUrl = baseUrl.concat(urlSuffix)
-                console.log(realUrl)
+                realUrl = baseUrl.concat(urlSuffix)
 
                 return (
-                        <iframe src={realUrl} className="youtube-video" width="640" height="385" controls>
+                        <iframe title={props.name} src={realUrl} className="youtube-video" width="640" height="385" controls>
                         </iframe>
 
                 )
@@ -151,7 +149,7 @@ export const Post = (props) => {
                 <div className="link">
                     <p>See full article here</p>
                     <p>&darr;</p>
-                    <a href={props.fullImage} target="_blank"><img src={thumbnail}></img></a>
+                    <a href={props.fullImage} target="_blank" rel="noreferrer"><img src={thumbnail} alt=""></img></a>
                 </div>
             )
         }
@@ -160,7 +158,7 @@ export const Post = (props) => {
                 <div className="gallery">
                     <p>View photo gallery here</p>
                     <p>&darr;</p>
-                    <a href={props.fullImage} target="_blank"><img src={thumbnail}></img></a>
+                    <a href={props.fullImage} target="_blank" rel="noreferrer"><img src={thumbnail} alt=""></img></a>
                 </div>
             )
         }
@@ -176,7 +174,6 @@ export const Post = (props) => {
                 const body = comments.body
                 const author = comments.author
                 const ups = comments.ups
-                const replies = comments.replies
               
                 return (
                     <Comment
@@ -195,7 +192,7 @@ export const Post = (props) => {
             <div className={isActive} id={title}>
                     <li className="post" >
                         <div className="left-side">
-                            <img src={thumbnail}></img>
+                            <img src={thumbnail} alt=""></img>
                         </div>
                         <div className="right-side">
                             <div className="top">
@@ -209,9 +206,9 @@ export const Post = (props) => {
                                 {checkMediaType()}
                             </div>
                         </div>
-                        <button className="comments-button" onClick={toggleComments}><img className="comment-icon" src="/comments-icon.png"></img>Comments</button>
+                        <button className="comments-button" onClick={toggleComments}><img className="comment-icon" src="/comments-icon.png" alt=""></img>Comments</button>
                         <div className="score">
-                            <img src="/arrow-icon.png"></img>
+                            <img src="/arrow-icon.png" alt=""></img>
                             <p>{score}</p>
                         </div>
                     </li>
@@ -236,7 +233,7 @@ export const Post = (props) => {
         <div className={isActive} id={title} onClick={handleClick} ref={ref}>
                 <li className="post" id={isActive}>
                     <div className="left-side">
-                        <img src={thumbnail}></img>
+                        <img src={thumbnail} alt=""></img>
                     </div>
                     <div className="right-side">
                         <div className="top">
@@ -250,9 +247,9 @@ export const Post = (props) => {
                             {checkMediaType()}
                         </div>
                     </div>
-                    <button className="comments-button" onClick={toggleComments}><img className="comment-icon" src="/comments-icon.png"></img>Comments</button>
+                    <button className="comments-button" onClick={toggleComments}><img className="comment-icon" src="/comments-icon.png" alt=""></img>Comments</button>
                     <div className="score">
-                        <img src="/arrow-icon.png"></img>
+                        <img src="/top-icon.png" alt=""></img>
                         <p>{score}</p>
                     </div>
                 </li>

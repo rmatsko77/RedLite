@@ -1,7 +1,20 @@
 .filter {
     padding: 0;
-    background-color: rgba(94, 94, 94, 0.325);
-    width: 100%;
+    margin: 0 .25rem 0 .25rem;
+    width: 98%;
+    border-radius: 4pt;
+}
+
+#light .filter {
+    background-color: white;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+#dark .filter {
+    background-color: rgba(94, 94, 94, 0.425);
+    transition-property: background-color;
+    transition-duration: .5s;
 }
 
 .filter .filter-text {
@@ -29,22 +42,54 @@
     flex-direction: column;
     align-items: center;
     border-radius: 5pt;
-    background-color: #504dff76;;
-
 }
 
-.filter .active {
+#light .filter .card {
+    background-color: #504dffb3;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+#dark .filter .card {
+    background-color: #504dff76;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+#light .filter .active {
+    background-color: #504dff;
+    border: .5pt solid black;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+#dark .filter .active {
     background-color: #504dffed;
-    border: 1pt solid white;
+    border: .5pt solid white;
+    transition-property: background-color;
+    transition-duration: .5s;
 }
 
 .filter .card:hover {
-    background-color: #504dffed;
     cursor: pointer;
+}
+
+#light .filter .card:hover {
+    background-color: #504dffed;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+#dark .filter .card:hover {
+    background-color: #504dffed;
+    transition-property: background-color;
+    transition-duration: .5s;
 }
 
 .filter .card:focus {
     background-color: #504dff;
+    transition-property: background-color;
+    transition-duration: .5s;
     cursor: pointer;
 }
 

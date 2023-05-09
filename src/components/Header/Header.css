@@ -1,28 +1,46 @@
 .header {
-    background-color: rgb(37, 37, 37);
     display: flex;
-    margin: .5rem;
-    justify-content: center;
+    margin: .25rem;
+    margin-top: 0;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    justify-content: space-between;
     align-items: center;
     height: 4rem;
     border-radius: 10px;
-    width: 100%;
+    width: 96%;
+}
+
+#dark .header {
+    background-color: rgb(37, 37, 37); 
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+#light .header {
+    background-color: rgb(255, 255, 255);
+    transition-property: background-color;
+    transition-duration: .5s;
 }
 
 .header .logos {
-    float: left;
-    margin-left: 1rem;
-    margin-right: 10%;
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin: .35rem;
 }
 
 .header #logo {
-    height: 3rem;
+   max-width: 25%;
+   max-height: 85%;
+
     
 }
 
 .header #text-logo {
-    height: 3rem;
-    
+    max-width: 75%;
+    max-height: 80%;
 }
 
 .header #search-icon {
@@ -43,7 +61,6 @@
     border-radius: 5px;
     padding-left: 2.3rem;
     padding-top: .2rem;
-    background-color: rgba(208, 208, 208, 0.654);
     color: white;
     cursor: default;
     box-shadow: none;
@@ -53,15 +70,43 @@
     
 }
 
-.header input:hover {
+#dark .header input {
+    background-color: rgba(208, 208, 208, 0.654);
+    transition-property: background-color;
+    transition-duration: .5s;
+
+}
+
+#dark .header form:hover input {
     background-color: rgba(208, 208, 208, 0.54);
+    transition-property: background-color;
+    transition-duration: .5s;
+
+}
+
+#light .header input {
+    background-color: rgba(146, 146, 146, 0.771);
+    transition-property: background-color;
+    transition-duration: .5s;
+
+}
+
+#light .header form:hover input {
+    background-color: rgba(129, 129, 129, 0.897);
+    transition-property: background-color;
+    transition-duration: .5s;
+
+}
+
+.header input:hover {
     font-size: 1.2rem;
 }
 
 .header input:focus {
-    background-color: rgba(208, 208, 208, 0.211);
+    background-color: rgba(225, 225, 225, 0.211);
     outline: none;
     font-size: 1rem;
+
 }
 
 .header input::placeholder {
@@ -83,6 +128,95 @@
     display: none;
 }
 
+.toggle {
+    --width: 80px;
+    --height: calc(var(--width) / 3);
 
+    position: relative;
+    display: inline-block;
+    width: var(--width);
+    height: var(--height);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+    border-radius: var(--height);
+    cursor: pointer;
+    margin: .5rem;
+  }
+
+  .toggle input {
+    display: none;
+  }
+
+  .toggle .slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--height);
+    background-color: #504dffb3;
+    transition: all 0.4s ease-in-out;
+  }
+
+  .toggle .slider::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(var(--height));
+    height: calc(var(--height));
+    border-radius: calc(var(--height) / 2);
+    background-color: #fff;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s ease-in-out;
+  }
+
+  .toggle input:checked+.slider {
+    background-color: #3c3b7c;
+  }
+
+  .toggle input:checked+.slider::before {
+    transform: translateX(calc(var(--width) - var(--height)));
+  }
+
+  .toggle .labels {
+    position: absolute;
+    top: 7px;
+    left: 20px;
+    width: 100%;
+    height: 100%;
+    color: #4d4d4d;
+    font-size: 12px;
+    font-family: sans-serif;
+    transition: all 0.4s ease-in-out;
+  }
+
+  .toggle .labels::after {
+    content: attr(data-off);
+    position: absolute;
+    opacity: 1;
+    bottom: 12.8px;
+    right: 37px;
+    font-size: .8rem;
+    color: rgb(34, 34, 34);
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.4);
+    transition: all 0.4s ease-in-out;
+  }
+
+  .toggle .labels::before {
+    content: attr(data-on);
+    position: relative;
+    opacity: 0;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.556);
+    transition: all 0.4s ease-in-out;
+  }
+
+  .toggle input:checked~.labels::after {
+    opacity: 0;
+  }
+
+  .toggle input:checked~.labels::before {
+    opacity: 1;
+  }
 
 

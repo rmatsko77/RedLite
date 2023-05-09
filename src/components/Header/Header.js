@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import store from '../../Store/store';
 import { SearchResults } from '../SearchResults/SearchResults';
 
-export function Header() {
+export function Header(props) {
 
     const state = store.getState();
     const dispatch = useDispatch();
@@ -41,7 +41,7 @@ export function Header() {
                 </img>
             </div>
             <form onSubmit={handleSubmit} >
-                <img src='/search-icon.png' id='search-icon'></img>
+                <img src='/search-icon.png' id='search-icon' alt=''></img>
                 <input
                 className='search-bar'
                 onChange={handleChange}
@@ -53,6 +53,13 @@ export function Header() {
                     <SearchResults />
                 </div>
             </form>
+            <div className='toggle-bar'>
+                <label class="toggle">
+                    <input type="checkbox"  onClick={props.toggleTheme}></input>
+                    <span class="slider"></span>
+                    <span class="labels" data-on='Dark' data-off="Light"></span>
+                </label>
+            </div>
         </div>
     )
 }
