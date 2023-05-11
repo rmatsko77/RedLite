@@ -10,7 +10,7 @@
 
 .comment .top {
     display: flex;
-    width: 25%;
+    width: 50%;
     height: 2rem;
     align-items: center;
     justify-content: space-between;
@@ -55,3 +55,22 @@
 .loader__dot { animation: 1s blink infinite }
 .loader__dot:nth-child(2) { animation-delay: 250ms }
 .loader__dot:nth-child(3) { animation-delay: 500ms }
+
+@media (max-width: 480px) {
+    .comment .body {
+        font-size: 2.5vw;
+    }
+
+    .comment .top .author {
+        font-size: 2vw;
+    }
+
+    .comment .top img {
+        height: 1.7vw;
+        margin-top: -.5vw;
+    }
+
+    .comment .top p {
+        font-size: 2vw;
+    }
+}

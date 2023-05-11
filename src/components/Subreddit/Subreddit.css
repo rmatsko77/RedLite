@@ -6,3 +6,8 @@ button {
     font-weight: bold;
 }
 
+@media (max-width: 480px) {
+    button {
+        font-size: 115%;
+    }
+}

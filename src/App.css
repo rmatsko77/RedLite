@@ -1,9 +1,13 @@
 .app {
   background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 0;
   padding-top: .25rem;
   padding-bottom: .5rem;
   width: 100%;
+  overflow-x: hidden;
 }
 
 
@@ -45,8 +49,9 @@
 .main {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  padding: .1rem;
+  justify-content: center;
+  width: 100%;
+  padding: 0;
   margin: 0;
 }
 
@@ -56,4 +61,10 @@
   align-content: center;
   max-width: 30%;
   padding: 0;
+}
+
+@media (max-width: 480px) {
+  .side-bar {
+      width: 25%;
+  }
 }

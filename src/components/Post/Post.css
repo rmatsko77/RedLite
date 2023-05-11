@@ -7,7 +7,7 @@
     align-items: center;
     height: 8rem;
     border-radius: 3pt;
-    width: 97%;
+    width: 100%;
     overflow: hidden;
 }
 
@@ -32,8 +32,8 @@
     display: flex;
     justify-content: start;
     align-items: center;
-    height: 40rem;
-    width: 97%;
+    height: 35rem;
+    width: 100%;
     overflow: hidden;
 }
 
@@ -64,8 +64,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 0;
-    padding-top: 0;
+    height: 100%;
+
+
 }
 
 .inactive .post .media {
@@ -163,12 +164,12 @@
     padding: 0;
     margin-top: .5rem;
     margin-bottom: 0;
-    margin-left: 1rem;
+    margin-left: -1rem;
 }
 
 .post .right-side .top p {
     font-size: .8rem;
-    padding: .3rem .5rem .3rem .5rem;
+    padding: .1rem .5rem .2rem .5rem;
     margin: 0;
 }
 
@@ -183,29 +184,27 @@
 
 .post .right-side .top .author {
     font-style: italic;
+    margin-right: .5rem;
 }
 
 .post .right-side .bottom {
     margin-top: 0;
+    padding-bottom: 0;
     padding-top: 0;
 }
 
 .post .right-side .bottom .title {
-    width: 95%;
-    font-size: 1.2rem;
+    width: 92%;
+    font-size: 1.3rem;
     font-weight: 500;
     padding-top: 0;
-    margin-top: 0.75rem;
+    margin-top: 0;
     margin-left: 1rem;
+    font-weight: 300;
 }
 
 .inactive .media {
     display: none;
-}
-
-.active .media {
-    display: block;
-    height: 100%;
 }
 
 .active .media img {
@@ -223,7 +222,8 @@
 .active .media .reddit-video {
     max-width: 100%;
     max-height: 80%;
-    margin-top: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .active .media .link {
@@ -275,7 +275,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    margin-top: 35.5rem;
+    margin-top: 31rem;
     margin-right: .25rem;
     border: none;
     height: 10%;
@@ -316,4 +316,47 @@
     overflow: scroll;
     min-height: auto;
     max-height: 25rem;
+}
+
+@media (max-width: 480px) {
+    .post .right-side .bottom .title {
+        margin-top: 0;
+        margin-left: 1vw;
+        font-size: 2.5vw;
+    }
+
+    .post .right-side .top .author {
+        font-size: 1.5vw;
+    }
+
+    .post .right-side .top .subreddit {
+        font-size: 2vw;
+    }
+
+    .inactive .post {
+        height: 20vw;
+    }
+
+    .active .post {
+        height: 70vw;
+    }
+
+    .active .post .comments-button {
+        position: relative;
+        margin-top: 61vw;
+        margin-left: 0;
+        font-size: 1.5vw;
+        height: 6vw;
+        width: 6vw;
+        font-size: .01vw;
+    }
+
+    .inactive .post .score p {
+        font-size: 1.5vw;
+    }
+
+    .active .post .score p {
+        font-size: 1.5vw;
+    }
+
 }

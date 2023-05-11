@@ -104,3 +104,54 @@
     margin: 0;
 
 }
+
+@media (max-width: 480px) {
+    .filter {
+        font-size: 2vw;
+    }
+
+    .filter .card {
+        padding: 0;
+        height: 7vw;
+        width: 7vw;
+    }
+
+    .filter .card img {
+        margin-top: .5vw;
+        height: 4vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .filter {
+        font-size: 1.5vw;
+    }
+
+    .filter .card {
+        padding: 0 0 .5vw 0;
+        height: 6vw;
+        width: 6vw;
+    }
+
+    .filter .card img {
+        margin-top: .5vw;
+        height: 4vw;
+    }
+}
+
+@media (max-width: 1024px) {
+    .filter {
+        font-size: 1.5vw;
+    }
+
+    .filter .card {
+        padding: 0 0 .5vw 0;
+        height: 6vw;
+        width: 6vw;
+    }
+
+    .filter .card img {
+        margin-top: .5vw;
+        height: 4vw;
+    }
+}

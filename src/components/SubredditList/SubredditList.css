@@ -60,3 +60,10 @@
     background-color: #504dffb0;
     border: black;
 }
+
+@media (max-width: 480px) {
+    .subredditList {
+        font-size: 2vw;
+    }
+    
+}
